@@ -1,15 +1,15 @@
 # PitchEffect~ object for MaxMSP
 
-This repository contains source codes for a MaxMSP External Object that can transform the input audio signal to a new pitch. This object can also be used as a vocoder. The underlying principle is based on the minimum-phase response, similar to the STRAIGHT vocoder, which is the predecessor of the [WORLD vocoder](https://github.com/mmorise/World).
+This repository contains source codes for a MaxMSP External Object that can transform the input audio signal to a new pitch. This object can also be used as a vocoder. The underlying principle is based on the minimum-phase response, similar to the STRAIGHT vocoder, which is the predecessor of the [WORLD vocoder](/mmorise/World).
 
 ## Features
 
 - **Pitch Shifting:** Transform the pitch of an input audio signal to any specified pitch.
 - **Vocoding:** Utilise the object as a vocoder for various signal processing applications.
 
-## Optimization
+## Compatibility
 
-- The object is optimised for **macOS** and does not work on other operating systems, sorry.
+The object is optimised for **macOS** and does not work on other operating systems, sorry.
 
 ## Disclaimer
 
@@ -21,7 +21,7 @@ This project is licensed under the [Unlicense](https://unlicense.org/).
 
 ## Installation
 
-- Requires [MaxSDK](https://github.com/Cycling74/max-sdk)
+- Requires [MaxSDK](/Cycling74/max-sdk)
 - Clone this repository within the MaxSDK directory and use CMake as with other objects
 
 ## Usage
