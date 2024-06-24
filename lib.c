@@ -192,9 +192,9 @@ C74_EXPORT void ext_main(void * const _) {
 		class_addattr(obj, attr_offset_new("width", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, width)));
 		class_addattr(obj, attr_offset_new("threshold", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, verge)));
 		class_addattr(obj, attr_offset_new("pitchsuppress", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, level)));
-        class_addmethod(obj, (method const)dsp64, "dsp64", A_CANT, 0);
-        class_dspinit(obj);
-        class_register(CLASS_BOX, obj);
+		class_addmethod(obj, (method const)dsp64, "dsp64", A_CANT, 0);
+		class_dspinit(obj);
+		class_register(CLASS_BOX, obj);
 		class = obj;
     }
 }
