@@ -176,7 +176,7 @@ C74_HIDDEN void dsp64(t_pitcheffect * const this, t_object const * const dsp64, 
 	this->cache = (double*const)sysmem_resizeptrclear(this->cache, sizeof(double const) * (this->frame * 6 + this->count * 2));
 	vDSP_vclrD(this->cache, 1, this->frame * 8 + this->count * 2);
 	// hanning-window
-	vDSP_hann_windowD(this->cache, width, vDSP_HANN_DENORM);
+	vDSP_hann_windowD(this->cache, width, vDSP_HANN_NORM);
 	// hilbert-window
 	hilbert(this->cache + this->frame, this->level, this->frame);
 //	sysmem_copyptr(this->cache + (width + 1) / 2, this->cache + frame, sizeof(double const) * (width / 2 + 1));
