@@ -185,7 +185,7 @@ C74_HIDDEN void dsp64(t_pitcheffect * const this, t_object const * const dsp64, 
 	dsp_add64((t_object*const)dsp64, (t_object*const)this, (t_perfroutine64 const)(count[1] ? count[0] ? dyn : fix : nop), 0, (uintptr_t const)samplerate);
 }
 C74_EXPORT void ext_main(void * const _) {
-	C74_STATIC_ASSERT(sizeof(double const) <= sizeof(uintptr_t const), "pitchsense~ requires 64-bit architecture");
+	C74_STATIC_ASSERT(sizeof(double const) <= sizeof(uintptr_t const), "pitcheffect~ requires 64-bit architecture");
 	if ( !class ) {
 		t_class * const obj = class_new("pitcheffect~", (method const)new, (method const)del, sizeof(t_pitcheffect const), NULL, A_GIMME, 0);
 		class_addattr(obj, attr_offset_new("pitch", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, pitch)));
