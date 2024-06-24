@@ -4,7 +4,7 @@
 #include<Accelerate/Accelerate.h>
 #include<simd/simd.h>
 typedef struct {
-    t_pxobject super;
+	t_pxobject super;
 	double const pitch;
 	double const width;
 	double const verge;
@@ -29,7 +29,7 @@ C74_HIDDEN void hilbert(double * const target, double const lambda, uintptr_t co
 C74_HIDDEN static t_class const * class = NULL;
 C74_HIDDEN void*new(t_symbol const * const symbol, long const argc, t_atom const * const argv) {
 	register t_pitcheffect * const this = (t_pitcheffect * const)object_alloc((t_class*const)class);
-    if ( this ) {
+	if ( this ) {
 		// init
 		this->forward = vDSP_DFT_zop_CreateSetupD(NULL, 0, vDSP_DFT_FORWARD);
 		this->inverse = vDSP_DFT_zop_CreateSetupD(NULL, 0, vDSP_DFT_INVERSE);
@@ -42,13 +42,13 @@ C74_HIDDEN void*new(t_symbol const * const symbol, long const argc, t_atom const
 		attr_args_process(this, argc, (t_atom*const)argv);
 		
 		// init
-        z_dsp_setup(&this->super, 2);
-        outlet_new(this, "signal");
-    }
-    return this;
+		z_dsp_setup(&this->super, 2);
+		outlet_new(this, "signal");
+	}
+	return this;
 }
 C74_HIDDEN void del(t_pitcheffect * const this) {
-    z_dsp_free(&this->super);
+	z_dsp_free(&this->super);
 	vDSP_DFT_DestroySetupD(this->inverse);
 	vDSP_DFT_DestroySetupD(this->forward);
 	sysmem_freeptr(this->cache);
@@ -187,7 +187,7 @@ C74_HIDDEN void dsp64(t_pitcheffect * const this, t_object const * const dsp64, 
 C74_EXPORT void ext_main(void * const _) {
 	C74_STATIC_ASSERT(sizeof(double const) <= sizeof(uintptr_t const), "pitchsense~ requires 64-bit architecture");
 	if ( !class ) {
-        t_class * const obj = class_new("pitcheffect~", (method const)new, (method const)del, sizeof(t_pitcheffect const), NULL, A_GIMME, 0);
+		t_class * const obj = class_new("pitcheffect~", (method const)new, (method const)del, sizeof(t_pitcheffect const), NULL, A_GIMME, 0);
 		class_addattr(obj, attr_offset_new("pitch", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, pitch)));
 		class_addattr(obj, attr_offset_new("width", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, width)));
 		class_addattr(obj, attr_offset_new("threshold", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_pitcheffect, verge)));
@@ -196,5 +196,6 @@ C74_EXPORT void ext_main(void * const _) {
 		class_dspinit(obj);
 		class_register(CLASS_BOX, obj);
 		class = obj;
-    }
+	}
 }
+
