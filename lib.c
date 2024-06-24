@@ -77,8 +77,8 @@ C74_HIDDEN void dsp(t_pitcheffect * const this, double * const o, double const *
 	}
 	{/* PROCESS */
 		register intptr_t phase = this->phase;
-		for ( ; phase < query ; phase += fs / x[phase] ) {
-			register intptr_t const width = simd_reduce_min((simd_long2 const){frame, 2 * fs / x[phase]});
+		for ( ; phase < query ; phase += fs / simd_reduce_max((simd_double2 const){1, fabs(x[phase])}) ) {
+//			register intptr_t const width = simd_reduce_min((simd_long2 const){frame, 2 * fs / x[phase]});
 			register intptr_t const point = ( index + phase ) % count;
 			register intptr_t const limit = ( count ) - point;
 			register intptr_t const head = simd_reduce_min((simd_long2 const){0 + limit, frame});
